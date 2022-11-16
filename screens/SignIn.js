@@ -1,9 +1,22 @@
-import { View, Text, TextInput, StyleSheet, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  SafeAreaView,
+  Button,
+} from "react-native";
 import React, { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-const SignIn = () => {
+const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+
+  const handleOnPress = () => {
+    navigation.navigate("HomeScreen");
+  };
 
   return (
     <SafeAreaView>
@@ -11,6 +24,11 @@ const SignIn = () => {
       <TextInput style={styles.textbox} onChangeText={setEmail} value={email} />
       <Text style={styles.title}>Password</Text>
       <TextInput style={styles.textbox} onChangeText={setPass} value={pass} />
+      <Button
+        title="Submit"
+        style={styles.submitButton}
+        onPress={handleOnPress}
+      />
     </SafeAreaView>
   );
 };

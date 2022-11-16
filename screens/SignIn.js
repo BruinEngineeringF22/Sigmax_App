@@ -5,6 +5,7 @@ import {
   StyleSheet,
   SafeAreaView,
   Button,
+  TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
@@ -18,6 +19,10 @@ const SignIn = ({ navigation }) => {
     navigation.navigate("HomeScreen");
   };
 
+  const handleSwitchScreen = () => {
+    navigation.navigate("SignUp");
+  };
+
   return (
     <SafeAreaView>
       <Text style={styles.title}>Email Address</Text>
@@ -29,6 +34,12 @@ const SignIn = ({ navigation }) => {
         style={styles.submitButton}
         onPress={handleOnPress}
       />
+      <TouchableOpacity
+        style={styles.switchScreen}
+        onPress={handleSwitchScreen}
+      >
+        <Text>Don't have an account? Sign up here!</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -47,6 +58,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     justifyContent: "center",
+  },
+  switchScreen: {
+    alignSelf: "center",
+    borderWidth: 3,
   },
 });
 

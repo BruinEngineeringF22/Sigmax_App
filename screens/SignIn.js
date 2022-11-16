@@ -1,47 +1,31 @@
-import { View, Text, TextInput, StyleSheet, SafeAreaView, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  SafeAreaView,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState } from "react";
-import { Button } from "react-native-web";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-
-const SignIn = () => {
+const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  // const emailRef = useRef()
-  // const passRef = useRef()
-  // const {login} = useAuth()
-  // const [error, setError] = useState('')
-  // const [success, setSucess] = useState('')
-  // const [loading, setLoading] = useState(false)
-  // const navigate = useNavigate()
+  const handleOnPress = () => {
+    navigation.navigate("HomeScreen");
+  };
 
-  // async function handleSubmit(e){
-  //     e.preventDefault()
+  const handleSwitchScreen = () => {
+    navigation.navigate("SignUp");
+  };
 
-  //     try{
-  //         setError('')
-  //         setLoading(true)
-  //         await login(emailRef.current.value, passRef.current.value)
-  //         setSucess('Sign In Success!')
-  //         navigate("/")
-  //     }catch{
-  //         setError('Failed to sign in')
-  //     }
-  // }
-
-  function Toggle() {
-    var temp = document.getElementById("typepass");
-    if (temp.type === "password") {
-        temp.type = "text";
-    }
-    else {
-        temp.type = "password";
-    }
-  }
   return (
-
       <View style={styles.centered}>
-        {/* <Image source = {{uri: assets/SigmaX_Logo.png}} /> */}
+        {/* <Image source={require('../assets/index/')} /> */}
         <Text style={styles.login}>LOGIN</Text>
         <SafeAreaView>
           {/* <Text style={styles.login}>LOGIN</Text> */}
@@ -55,8 +39,19 @@ const SignIn = () => {
         color="#f194ff"
         onPress={() => Alert.alert('Button with adjusted color pressed')}
         />
-      </View>
 
+      <Button
+        title="Submit"
+        style={styles.submitButton}
+        onPress={handleOnPress}
+      />
+      <TouchableOpacity
+        style={styles.switchScreen}
+        onPress={handleSwitchScreen}
+      >
+        <Text>Don't have an account? Sign up here!</Text>
+      </TouchableOpacity>
+      </View>
   );
 };
 
@@ -64,7 +59,7 @@ const styles = StyleSheet.create({
 
   loginBtn: {
     alignSelf: "center",
-    width: Dimensions.get('window').width / 2,
+    // width: Dimensions.get('window').width / 2,
     justifyContent: "center",
   },
 
@@ -73,7 +68,7 @@ const styles = StyleSheet.create({
     width: 308,
     height: 105,
     left: 47,
-    top: 200,
+    top: 180,
     fontFamily: 'Fredoka',
     fontStyle: 'normal',
     fontWeight: 600,
@@ -133,6 +128,10 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     justifyContent: "center",
+  },
+  switchScreen: {
+    alignSelf: "center",
+    borderWidth: 3,
   },
 });
 

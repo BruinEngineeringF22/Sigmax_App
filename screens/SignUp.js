@@ -1,3 +1,5 @@
+
+import PythonService from '../PythonService';
 import React, { useState } from "react";
 import {
   View,
@@ -35,6 +37,10 @@ const SignUp = ({ navigation }) => {
       .catch((error) => alert(error.message));
   };
 
+    function backendTest() {
+        console.log("signUp called")
+        PythonService.sendSignal()
+    }
   return (
     <View style={styles.container}>
       <TextInput
@@ -73,6 +79,13 @@ const SignUp = ({ navigation }) => {
         style={styles.switchScreenButton}
       >
         <Text>Already have an accout? Sign in here</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={backendTest}
+        style={styles.switchScreenButton}
+      >
+        <Text>Test backend</Text>
       </TouchableOpacity>
     </View>
   );

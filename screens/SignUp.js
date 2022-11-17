@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { View, Button, TextInput, StyleSheet } from 'react-native'
+import PythonService from '../PythonService';
 
 
 
@@ -12,6 +13,7 @@ const SignUp = () => {
 
     function signUp() {
         console.log("signUp called")
+        PythonService.sendSignal()
     }
 
     return (

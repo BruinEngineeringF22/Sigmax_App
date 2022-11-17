@@ -2,9 +2,23 @@ import { Dimensions, StyleSheet, SafeAreaView, Text, Button, Platform, View, Tou
 
 const Homescreen = () => {
 
-  const onPressBandage = () => {
-    console.log("call python api")
-  }
+  const onPressItem = (item) => {
+    console.log("Item: " + item);
+    switch(item){
+      case process.env.Item_One:
+        console.log("dispense" + item);
+
+      case process.env.Item_Two:
+        console.log("call python api");
+      
+      case process.env.Item_Three:
+        console.log("call python api");
+
+      default :
+        console.log("def")
+
+
+    }
 
   return (
     <SafeAreaView style = {styles.container}>
@@ -15,7 +29,7 @@ const Homescreen = () => {
       <View style = {styles.button1}>
         <TouchableOpacity 
           style={styles.button1}
-          onPress={onPressBandage}
+          onPress={onPressItem('hello')}
         >
           <Text style = {styles.buttonText}>bandages</Text>
         </TouchableOpacity>
@@ -23,7 +37,7 @@ const Homescreen = () => {
       <View style = {styles.button2}>
       <TouchableOpacity
           style={styles.button2}
-          onPress={onPressBandage}
+          onPress={onPressItem('hello')}
         >
           <Text style = {styles.buttonText}>pills</Text>
         </TouchableOpacity>
@@ -31,7 +45,7 @@ const Homescreen = () => {
       <View style = {styles.button3}>
         <TouchableOpacity
             style={styles.button3}
-            onPress={onPressBandage}
+            onPress={onPressItem('hello')}
           >
             <Text style = {styles.buttonText}>miscellaneous</Text>
           </TouchableOpacity>
@@ -129,6 +143,7 @@ const styles = StyleSheet.create({
 
   });
 
-
+}
 
 export default Homescreen;
+

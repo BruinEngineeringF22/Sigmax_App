@@ -5,6 +5,7 @@ import {
   StyleSheet,
   SafeAreaView,
   Button,
+  Image,
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
@@ -25,7 +26,11 @@ const SignIn = ({ navigation }) => {
 
   return (
     <View style={styles.centered}>
-      {/* <Image source={require('../assets/index/')} /> */}
+      <View style={styles.image}> 
+        <Image source={require("./images/Sigma_Logo.png")} 
+        style={{ width: 400, height: 400, bottom: 280, right: 150}}
+        />
+      </View>
       <Text style={styles.login}>LOGIN</Text>
       <SafeAreaView>
         <View>
@@ -130,6 +135,10 @@ const styles = StyleSheet.create({
     // margin: 4,
     //borderWidth: 1,
     padding: 10,
+  },
+
+  image:{
+    position: "absolute",
   },
 
   textbox: {

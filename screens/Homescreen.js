@@ -1,10 +1,8 @@
 import { Dimensions, StyleSheet, SafeAreaView, Text, Button, Platform, View, TouchableOpacity, Image } from "react-native";
-import React from "react";
-import { useFonts } from 'expo-font';
 
 const Homescreen = () => {
 
-  onPressBandage = () => {
+  const onPressBandage = () => {
     console.log("call python api")
   }
 
@@ -62,9 +60,9 @@ const Homescreen = () => {
             style={styles.guideButton}
             onPress={onPressBandage}
           >
-            <Image source={require('./images/User_alt.png')}
+            <Image source={require('./images/Home.png')}
         style={{width: 50, height: 50, justifyContent: 'left'}} />
-          </TouchableOpacity>
+          </TouchableOpacity> 
         </View>
       </View>
     </SafeAreaView>

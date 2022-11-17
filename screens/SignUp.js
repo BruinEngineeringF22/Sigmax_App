@@ -5,9 +5,11 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Text,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { auth } from "../Firebase";
 
 const SignUp = ({ navigation }) => {
   const [userName, setUserName] = useState("");
@@ -24,7 +26,13 @@ const SignUp = ({ navigation }) => {
   };
 
   const handleSubmit = () => {
-    navigation.navigate("HomeScreen");
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        navigation.navigate("HomeScreen");
+      })
+      .catch((error) => alert(error.message));
   };
 
   return (
@@ -81,8 +89,8 @@ const styles = StyleSheet.create({
     padding: 8,
     color: "white",
     borderRadius: 14,
-    fontSize: 18,
-    fontWeight: "500",
+    fontSize: 16,
+    //fontWeight: 50,
   },
   container: {
     flex: 1,
@@ -95,7 +103,7 @@ const styles = StyleSheet.create({
     height: 106,
     left: 30,
     top: 277,
-    fontWeight: 600,
+    fontWeight: 60,
     fontSize: 70,
     lineHeight: 85,
     color: "black",

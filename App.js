@@ -12,10 +12,21 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SignIn">
-        <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Navigator
+        screenOptions={{ gestureENabled: false }}
+        initialRouteName="SignIn"
+      >
+        <Stack.Screen
+          options={{ gestureEnabled: false }}
+          name="SignIn"
+          component={SignIn}
+        />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="HomeScreen" component={Homescreen} />
+        <Stack.Screen
+          options={{ gestureEnabled: false, headerBackVisible: false }}
+          name="HomeScreen"
+          component={Homescreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -108,7 +108,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#A95DF0",
+    backgroundColor: "#A95EF9",
+    //opacity: 0.3,
   },
 
   logo: {

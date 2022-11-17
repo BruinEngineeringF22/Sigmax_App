@@ -60,7 +60,7 @@ const Homescreen = () => {
             style={styles.guideButton}
             onPress={onPressBandage}
           >
-            <Image source={require('./images/Home.png')}
+            <Image source={require('./images/User_alt.png')}
         style={{width: 50, height: 50, justifyContent: 'left'}} />
           </TouchableOpacity> 
         </View>
@@ -80,8 +80,7 @@ const styles = StyleSheet.create({
       opacity: '0.3',
       borderLeftWidth: 30,
       borderTopWidth: 10,
-      alignItems: 'left',
-      fontFamily: 'FredokaOne-Regular'
+      alignItems: 'left'
     }, welcome: {
       borderLeftWidth: 20,
       fontSize: 20,

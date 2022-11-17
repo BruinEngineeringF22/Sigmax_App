@@ -1,19 +1,6 @@
 
 
 class PythonService {
-    /*postData(input) {
-        $.ajax({
-            type: "POST",
-            url: "/bluetooth.py",
-            data: { param: input },
-            success: callbackFunc()
-        });
-    }
-    
-    callbackFunc(response) {
-        // do something with the response
-        console.log(response);
-    }*/
     sendSignal() {
         console.log("sendSignal called")
         return fetch('http://127.0.0.1:5000', {

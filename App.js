@@ -1,33 +1,41 @@
-<<<<<<< Updated upstream
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+//import MainContainer from './navigation/MainContainer';
 import Homescreen from "./screens/Homescreen";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
-=======
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Homescreen from './screens/Homescreen';
->>>>>>> Stashed changes
+import Remote from "./screens/Remote"
 
 export default function App() {
   const Stack = createNativeStackNavigator();
 
   return (
-<<<<<<< Updated upstream
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SignIn">
-        <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Navigator
+        screenOptions={{ gestureENabled: false }}
+        initialRouteName="SignIn"
+      >
+        <Stack.Screen
+          options={{ gestureEnabled: false }}
+          name="SignIn"
+          component={SignIn}
+        />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="HomeScreen" component={Homescreen} />
+        <Stack.Screen
+          options={{ gestureEnabled: false }}
+          name="Remote"
+          component={Remote}
+        />
+        <Stack.Screen
+          options={{ gestureEnabled: false, headerBackVisible: false }}
+          name="HomeScreen"
+          component={Homescreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
-=======
-    <Homescreen/>
->>>>>>> Stashed changes
   );
 }
 

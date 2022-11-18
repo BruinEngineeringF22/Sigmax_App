@@ -72,7 +72,7 @@ const SignUp = ({ navigation }) => {
         onPress={handleSwitch}
         style={styles.switchScreenButton}
       >
-        <Text>Already have an accout? Sign in here</Text>
+        <Text style = {{color: "white"}}>Already have an account? Sign in here</Text>
       </TouchableOpacity>
     </View>
   );
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   input: {
     width: 350,
     height: 55,
-    backgroundColor: "#42A5F5",
+    backgroundColor: "#A95DF0",
     margin: 10,
     padding: 8,
     color: "white",
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#d6b3f8"
   },
   signup: {
     position: "absolute",
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
     fontWeight: 60,
     fontSize: 70,
     lineHeight: 85,
-    color: "black",
+    color: "#c99bf6",
     opacity: 0.75,
   },
   switchScreenButton: {

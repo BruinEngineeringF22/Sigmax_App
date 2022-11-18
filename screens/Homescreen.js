@@ -10,12 +10,15 @@ import {
   Image,
   ScrollView,
 } from "react-native";
+import PythonService from '../PythonService';
 
 import { auth } from "../Firebase";
 
 const Homescreen = ({ navigation }) => {
-  const onPressBandage = () => {
-    console.log("call python api");
+
+  const onPressBandage = (param) => {
+    console.log("called python api");
+    PythonService.sendSignal(param);
   };
 
   const handleSignOut = () => {
@@ -34,17 +37,17 @@ const Homescreen = ({ navigation }) => {
           style={{ width: 200, height: 200, justifyContent: "center" }}
         />
         <View style={styles.button1}>
-          <TouchableOpacity style={styles.button1} onPress={onPressBandage}>
+          <TouchableOpacity style={styles.button1} onPress={() => onPressBandage("bandages")}>
             <Text style={styles.buttonText}>bandages</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.button2}>
-          <TouchableOpacity style={styles.button2} onPress={onPressBandage}>
+          <TouchableOpacity style={styles.button2} onPress={() => onPressBandage("pills")}>
             <Text style={styles.buttonText}>pills</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.button3}>
-          <TouchableOpacity style={styles.button3} onPress={onPressBandage}>
+          <TouchableOpacity style={styles.button3} onPress={() => onPressBandage("miscellaneous")}>
             <Text style={styles.buttonText}>miscellaneous</Text>
           </TouchableOpacity>
         </View>

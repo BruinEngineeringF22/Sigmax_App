@@ -24,13 +24,7 @@ const Homescreen = ({ navigation }) => {
     });
   };
 
-  const handleRemote = () => {
-      navigation.navigate("Remote");
-  };
-
-
   return (
-    
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <Text style={styles.title}>SIGMAX</Text>
@@ -54,15 +48,15 @@ const Homescreen = ({ navigation }) => {
             <Text style={styles.buttonText}>miscellaneous</Text>
           </TouchableOpacity>
         </View>
-        <View style={{ flex: 1,flexDirection: "row", justifyContent: "center"}}>
+        <View style={{ flexDirection: "row" }}>
           <View>
             <TouchableOpacity
               style={styles.guideButton}
-              onPress={handleRemote}
+              onPress={onPressBandage}
             >
               <Image
                 source={require("./images/Favorites.png")}
-                style={{ width: 40, height: 40}}
+                style={{ width: 50, height: 50, justifyContent: "left" }}
               />
             </TouchableOpacity>
           </View>
@@ -73,7 +67,7 @@ const Homescreen = ({ navigation }) => {
             >
               <Image
                 source={require("./images/Home.png")}
-                style={{ width: 40, height: 40}}
+                style={{ width: 50, height: 50, justifyContent: "left" }}
               />
             </TouchableOpacity>
           </View>

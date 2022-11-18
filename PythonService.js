@@ -1,8 +1,10 @@
 class PythonService {
   // old url: 'http://127.0.0.1:5000/send-signal'
+
+  //172.20.10.4
   sendSignal(input) {
     console.log("sendSignal called");
-    return fetch("http://192.168.56.1:5000/send-signal", {
+    return fetch("http://172.20.10.6:5000/send-signal", {
       method: "POST",
       headers: {
         Accept: "application/json",

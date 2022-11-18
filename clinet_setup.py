@@ -10,8 +10,9 @@ import subprocess
 
 import sys
 
-
 addr = "DC:A6:32:B8:AC:C9"
+
+print(sys.argv)
 
 if len(sys.argv) < 2:
     print("No device specified. Searching all nearby bluetooth devices for "
@@ -47,23 +48,3 @@ while True:
     sock.send(data)
 
 sock.close()
-
-
-# name = "raspberrypi"      # Device name
-# addr = "DC:A6:32:B8:AC:C9"      # Device Address
-# port = 1         # RFCOMM port
-# passkey = "raspberry"  # passkey of the device you want to connect
-
-# # kill any "bluetooth-agent" process that is already running
-# subprocess.call("kill -9 `pidof bluetooth-agent`", shell=True)
-
-# # Start a new "bluetooth-agent" process where XXXX is the passkey
-# status = subprocess.call("bluetooth-agent " + passkey + " &", shell=True)
-
-# # Now, connect in the same way as always with PyBlueZ
-# try:
-#     s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-#     s.connect((addr, port))
-# except bluetooth.btcommon.BluetoothError as err:
-#     # Error handler
-#     pass

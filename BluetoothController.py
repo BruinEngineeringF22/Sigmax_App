@@ -54,14 +54,13 @@ print("HELLO ITS HERE")
 def sendSignal():
     param = request.json["param"]
     print(param)
-    print("HERE")
     sock.send(param)
     return param
 
 
 if __name__ == '__main__':
 
-    app.run(ssl_context='adhoc')
+    app.run(host=' 172.20.10.6')
     # FOR SCANNING
     # nearby_devices = bluetooth.discover_devices(lookup_names=True)
     # print("found %d devices" % len(nearby_devices))

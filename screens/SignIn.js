@@ -5,26 +5,19 @@ import {
   StyleSheet,
   SafeAreaView,
   Button,
+  Image,
   TouchableOpacity,
-  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { auth } from "../Firebase";
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
   const handleOnPress = () => {
-    auth
-      .signInWithEmailAndPassword(email, pass)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        navigation.navigate("HomeScreen");
-      })
-      .catch((error) => Alert.alert(error.message));
+    navigation.navigate("HomeScreen");
   };
 
   const handleSwitchScreen = () => {
@@ -33,7 +26,11 @@ const SignIn = ({ navigation }) => {
 
   return (
     <View style={styles.centered}>
-      {/* <Image source={require('../assets/index/')} /> */}
+      <View style={styles.image}> 
+        <Image source={require("./images/Sigma_Logo.png")} 
+        style={{ width: 400, height: 400, bottom: 280, right: 150}}
+        />
+      </View>
       <Text style={styles.login}>LOGIN</Text>
       <SafeAreaView>
         <View>
@@ -55,8 +52,17 @@ const SignIn = ({ navigation }) => {
           />
         </View>
       </SafeAreaView>
-      <Button title="Login" color="#f194ff" onPress={handleOnPress} />
+      <Button
+        title="Login"
+        color="#f194ff"
+        onPress={() => Alert.alert("Button with adjusted color pressed")}
+      />
 
+      <Button
+        title="Submit"
+        style={styles.submitButton}
+        onPress={handleOnPress}
+      />
       <TouchableOpacity
         style={styles.switchScreen}
         onPress={handleSwitchScreen}
@@ -129,6 +135,10 @@ const styles = StyleSheet.create({
     // margin: 4,
     //borderWidth: 1,
     padding: 10,
+  },
+
+  image:{
+    position: "absolute",
   },
 
   textbox: {

@@ -74,20 +74,12 @@ const Homescreen = ({ navigation }) => {
           <View>
             <TouchableOpacity
               style={styles.guideButton}
-              onPress={onPressBandage}
+              onPress={handleSignOut}
             >
               <Image
                 source={require("./images/User_alt.png")}
-                style={{ width: 50, height: 50, justifyContent: "left" }}
+                style={{ width: 40, height: 40}}
               />
-            </TouchableOpacity>
-          </View>
-          <View>
-            <TouchableOpacity
-              style={styles.logOutButton}
-              onPress={handleSignOut}
-            >
-              <Text>Log Out!</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -95,17 +87,14 @@ const Homescreen = ({ navigation }) => {
     </SafeAreaView>
   );
 };
+
+export default Homescreen
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
     //alignItems: "center",
-  },
-  logOutButton: {
-    borderWidth: 2,
-    alignSelf: "center",
-    right: 200,
-    bottom: 5,
   },
   title: {
     color: "#A95DF0",
@@ -128,44 +117,45 @@ const styles = StyleSheet.create({
     opacity: "1",
   },
   button1: {
-    opacity: "0.6",
     alignContent: "center",
-    backgroundColor: "#A95DF0",
+    backgroundColor: "#c99bf6",
     borderRadius: 12,
-    padding: 10,
+    padding: "2%",
     marginTop: 15,
     marginBottom: 15,
     marginLeft: 35,
     marginRight: 35,
+    flex: 1
   },
   button2: {
-    opacity: "0.45",
     alignContent: "center",
-    backgroundColor: "#A95DF0",
+    backgroundColor: "#d6b3f8",
     borderRadius: 12,
-    padding: 10,
+    padding: "2%",
     marginTop: 15,
     marginBottom: 15,
     marginLeft: 35,
     marginRight: 35,
+    flex: 1
   },
   button3: {
-    opacity: "0.3",
     alignContent: "center",
-    backgroundColor: "#A95DF0",
+    backgroundColor: "#e2c9fb",
     borderRadius: 12,
-    padding: 10,
+    padding: "2%",
     marginTop: 15,
     marginBottom: 15,
     marginLeft: 35,
     marginRight: 35,
+    flex: 1
   },
   guideButton: {
     padding: 10,
     marginLeft: 40,
     marginRight: 20,
     marginTop: 20,
-  },
+    marginBottom: 20,
+    justifyContent: "flex-end"
+  }
 });
 
-export default Homescreen;

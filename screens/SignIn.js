@@ -7,17 +7,25 @@ import {
   Button,
   Image,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { auth } from "../Firebase";
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
   const handleOnPress = () => {
-    navigation.navigate("HomeScreen");
+    auth
+      .signInWithEmailAndPassword(email, pass)
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        navigation.navigate("HomeScreen");
+      })
+      .catch((error) => Alert.alert(error.message));
   };
 
   const handleSwitchScreen = () => {
@@ -52,17 +60,8 @@ const SignIn = ({ navigation }) => {
           />
         </View>
       </SafeAreaView>
-      <Button
-        title="Login"
-        color="#f194ff"
-        onPress={() => Alert.alert("Button with adjusted color pressed")}
-      />
+      <Button title="Login" color="#f194ff" onPress={handleOnPress} />
 
-      <Button
-        title="Submit"
-        style={styles.submitButton}
-        onPress={handleOnPress}
-      />
       <TouchableOpacity
         style={styles.switchScreen}
         onPress={handleSwitchScreen}
@@ -113,7 +112,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#A95EF9",
+    backgroundColor: "#d6b3f8",
     //opacity: 0.3,
   },
 

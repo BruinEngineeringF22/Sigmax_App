@@ -1,47 +1,57 @@
 import React, { useRef }from 'react';
 import {Animated, Image, Pressable, View, Text, StyleSheet} from 'react-native';
+import PythonService from '../PythonService';
 
 const RemoteScreen = () => {
 
     const fadeAnim = useRef(new Animated.Value(0)).current;
 
-    const onPressInUp = () => {
+    const onPressInUp = (param) => {
         /* Animated.timing(fadeAnim, {
             toValue: 1,
             duration: 5000
           }).start();*/
+        PythonService.sendSignal(param);
         console.log("onPressInUp called; move up");
     }
 
-    const onLongPressUp = () => {
+    const onLongPressUp = (param) => {
+        PythonService.sendSignal(param);
         console.log("onLongPressUp called; move up and stay");
     }
 
-    const onPressInDown = () => {
+    const onPressInDown = (param) => {
+        PythonService.sendSignal(param);
         console.log("onPressInDown called; move down");
     }
 
-    const onLongPressDown = () => {
+    const onLongPressDown = (param) => {
+        PythonService.sendSignal(param);
         console.log("onLongPressDown called; move down and stay");
     }
 
-    const onPressInLeft = () => {
+    const onPressInLeft = (param) => {
+        PythonService.sendSignal(param);
         console.log("onPressInLeft called; move left");
     }
 
-    const onLongPressLeft = () => {
+    const onLongPressLeft = (param) => {
+        PythonService.sendSignal(param);
         console.log("onLongPressLeft called; move left and stay");
     }
 
-    const onPressInRight = () => {
+    const onPressInRight = (param) => {
+        PythonService.sendSignal(param);
         console.log("onPressInRight called; move right");
     }
 
-    const onLongPressRight = () => {
+    const onLongPressRight = (param) => {
+        PythonService.sendSignal(param);
         console.log("onLongPressRight called; move right and stay");
     }
 
-    const onPressOutFunction = () => {
+    const onPressOutFunction = (param) => {
+        PythonService.sendSignal(param);
         console.log("onPressOutFunction called; recenter sigmax");
     }
 
@@ -69,27 +79,27 @@ const RemoteScreen = () => {
             <View style={styles.midCircle} />
             <View style={styles.innerCircle} />
             
-            <Pressable onLongPress={onLongPressUp}
-                        onPressOut={onPressOutFunction}
-                        onPressIn={onPressInUp}>
+            <Pressable onLongPress={() => onLongPressUp('f')}
+                        onPressOut={() => onPressOutFunction('s')}
+                        onPressIn={() => onPressInUp('f')}>
                 <View style={[styles.upTri, styles.up]} />
             </Pressable>
 
-            <Pressable onLongPress={onLongPressDown}
-                        onPressOut={onPressOutFunction}
-                        onPressIn={onPressInDown}>
+            <Pressable onLongPress={() => onLongPressDown('b')}
+                        onPressOut={() => onPressOutFunction('s')}
+                        onPressIn={() => onPressInDown('b')}>
                 <View style={[styles.downTri, styles.down]} />
             </Pressable>
 
-            <Pressable onLongPress={onLongPressRight}
-                        onPressOut={onPressOutFunction}
-                        onPressIn={onPressInRight}>
+            <Pressable onLongPress={() => onLongPressRight('r')}
+                        onPressOut={() => onPressOutFunction('s')}
+                        onPressIn={() => onPressInRight('r')}>
                 <View style={[styles.rightTri, styles.right]} />
             </Pressable>
 
-            <Pressable onLongPress={onLongPressLeft}
-                        onPressOut={onPressOutFunction}
-                        onPressIn={onPressInLeft}>
+            <Pressable onLongPress={() => onLongPressLeft('l')}
+                        onPressOut={() => onPressOutFunction('s')}
+                        onPressIn={() => onPressInLeft('l')}>
                 <View style={[styles.leftTri, styles.left]} />
             </Pressable>
         </View>

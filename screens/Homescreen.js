@@ -8,12 +8,15 @@ import {
   Image,
   ScrollView,
 } from "react-native";
+import PythonService from '../PythonService';
 
 import { auth } from "../Firebase";
 
 const Homescreen = ({ navigation }) => {
-  const onPressBandage = () => {
-    console.log("call python api");
+
+  const onPressBandage = (param) => {
+    console.log("called python api");
+    PythonService.sendSignal(param);
   };
 
   const handleSignOut = () => {
@@ -21,6 +24,10 @@ const Homescreen = ({ navigation }) => {
       navigation.navigate("SignIn");
     });
   };
+
+  const handleRemoteControl = () => {
+    navigation.navigate("RemoteScreen");
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -32,17 +39,17 @@ const Homescreen = ({ navigation }) => {
         />
         <Text style={styles.welcome}>Welcome! </Text>
         <View style={styles.button1}>
-          <TouchableOpacity style={styles.button1} onPress={onPressBandage}>
+          <TouchableOpacity style={styles.button1} onPress={() => onPressBandage("bandages")}>
             <Text style={styles.buttonText}>bandages</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.button2}>
-          <TouchableOpacity style={styles.button2} onPress={onPressBandage}>
+          <TouchableOpacity style={styles.button2} onPress={() => onPressBandage("pills")}>
             <Text style={styles.buttonText}>pills</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.button3}>
-          <TouchableOpacity style={styles.button3} onPress={onPressBandage}>
+          <TouchableOpacity style={styles.button3} onPress={() => onPressBandage("miscellaneous")}>
             <Text style={styles.buttonText}>miscellaneous</Text>
           </TouchableOpacity>
         </View>
@@ -50,7 +57,7 @@ const Homescreen = ({ navigation }) => {
           <View>
             <TouchableOpacity
               style={styles.guideButton}
-              onPress={onPressBandage}
+              onPress={handleRemoteControl}
             >
               <Image
                 source={require("./images/Favorites.png")}
@@ -61,7 +68,7 @@ const Homescreen = ({ navigation }) => {
           <View>
             <TouchableOpacity
               style={styles.guideButton}
-              onPress={onPressBandage}
+              //onPress={}
             >
               <Image
                 source={require("./images/Home.png")}

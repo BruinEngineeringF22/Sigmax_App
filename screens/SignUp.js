@@ -40,9 +40,9 @@ const SignUp = ({ navigation }) => {
       .catch((error) => alert(error.message));
   };
 
-    function backendTest() {
+    function backendTest(input) {
         console.log("signUp called")
-        PythonService.sendSignal()
+        PythonService.sendSignal(input);
     }
   return (
     
@@ -88,7 +88,7 @@ const SignUp = ({ navigation }) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={backendTest}
+        onPress={backendTest(1)}
         style={styles.switchScreenButton}
       >
         <Text>Test backend</Text>

@@ -7,7 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Homescreen from "./screens/Homescreen";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
-import Remote from "./screens/Remote"
+import RemoteScreen from './screens/RemoteScreen';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -18,17 +18,17 @@ export default function App() {
         screenOptions={{ gestureENabled: false }}
         initialRouteName="SignIn"
       >
+        <Stack.Screen 
+          name="RemoteScreen"
+          component={RemoteScreen}
+        />
         <Stack.Screen
           options={{ gestureEnabled: false }}
           name="SignIn"
           component={SignIn}
         />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen
-          options={{ gestureEnabled: false }}
-          name="Remote"
-          component={Remote}
-        />
+
         <Stack.Screen
           options={{ gestureEnabled: false, headerBackVisible: false }}
           name="HomeScreen"

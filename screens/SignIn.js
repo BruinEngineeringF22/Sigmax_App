@@ -36,31 +36,38 @@ const SignIn = ({ navigation }) => {
     <View style={styles.centered}>
       <View style={styles.image}> 
         <Image source={require("./images/Sigma_Logo.png")} 
-        style={{ width: 400, height: 400, bottom: 280, right: 150}}
+        style={styles.img} resizeMode='contain'
         />
       </View>
       <Text style={styles.login}>LOGIN</Text>
       <SafeAreaView>
         <View>
           <View style={styles.textInputView}>
-            <Text style={styles.title}>Email Address</Text>
             <TextInput
               style={styles.textbox}
+              placeholder="Email"
+              autoCapitalize="none"
+              placeholderTextColor="grey"
               onChangeText={setEmail}
               value={email}
             />
           </View>
 
-          <Text style={styles.title}>Password</Text>
           <TextInput
             secureTextEntry={true}
             style={styles.textbox}
+            placeholder="Password"
+            autoCapitalize="none"
+            placeholderTextColor="grey"
             onChangeText={setPass}
             value={pass}
           />
         </View>
       </SafeAreaView>
-      <Button title="Login" color="#f194ff" onPress={handleOnPress} />
+      {/* <Button title="Login" style={styles.logbutton} onPress={handleOnPress} /> */}
+      <TouchableOpacity style={styles.logbutton} onPress={handleOnPress}>
+        <Text style={styles.buttonText}>log in</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.switchScreen}
@@ -83,9 +90,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: 308,
     height: 105,
-    left: 47,
-    top: 180,
-    fontFamily: "Fredoka",
+    left: 40,
+    top: 220,
     fontStyle: "normal",
     //fontWeight: 60,
     fontSize: 70,
@@ -113,7 +119,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#d6b3f8",
-    //opacity: 0.3,
   },
 
   logo: {
@@ -141,23 +146,48 @@ const styles = StyleSheet.create({
   },
 
   textbox: {
-    width: 300,
-    height: 40,
+    width: 350,
+    height: 70,
     backgroundColor: "#fff",
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderColor: "#ccc",
     borderWidth: 1,
-    borderRadius: 15,
+    borderRadius: 20,
     fontSize: 16,
     margin: 12,
     borderWidth: 1,
     padding: 10,
     justifyContent: "center",
+    opacity: 0.7,
   },
   switchScreen: {
     alignSelf: "center",
     borderWidth: 3,
+  },
+  img: {
+    width: 250, 
+    height: 250, 
+    bottom: 280, 
+    right: 150,
+    marginBottom: 10,
+    marginLeft: 50,
+    flex: 1,
+    opacity: '0.7'
+  },
+  logbutton: {
+    alignContent: "center",
+    backgroundColor: "#A95DF0",
+    borderRadius: 12,
+    padding: "2%",
+    marginTop: 15,
+    marginBottom: 15
+  },
+  buttonText: {
+    fontSize: 25,
+    color: "#000000",
+    textAlign: "center",
+    opacity: "0.8",
   },
 });
 

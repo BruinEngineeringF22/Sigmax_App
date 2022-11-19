@@ -10,11 +10,14 @@ import {
   Alert,
 } from "react-native";
 import React, { useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth } from "../Firebase";
+import { useFonts, FredokaOne_400Regular } from '@expo-google-fonts/fredoka-one';
 
 const SignIn = ({ navigation }) => {
+  let [fontsLoaded] = useFonts({
+    FredokaOne_400Regular,
+  });
+
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
@@ -31,6 +34,10 @@ const SignIn = ({ navigation }) => {
   const handleSwitchScreen = () => {
     navigation.navigate("SignUp");
   };
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <View style={styles.centered}>
@@ -73,7 +80,7 @@ const SignIn = ({ navigation }) => {
         style={styles.switchScreen}
         onPress={handleSwitchScreen}
       >
-        <Text>Don't have an account? Sign up here!</Text>
+        <Text style = {{fontFamily: 'FredokaOne_400Regular'}}>Don't have an account? Sign up here!</Text>
       </TouchableOpacity>
     </View>
   );
@@ -84,6 +91,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     // width: Dimensions.get('window').width / 2,
     justifyContent: "center",
+    fontFamily: 'FredokaOne_400Regular',
   },
 
   login: {
@@ -97,6 +105,8 @@ const styles = StyleSheet.create({
     fontSize: 70,
     lineHeight: 85,
     color: "#000000",
+    fontFamily: 'FredokaOne_400Regular',
+    opacity: '0.7'
   },
   textInputView: {
     marginTop: 50,
@@ -112,6 +122,7 @@ const styles = StyleSheet.create({
     background: "#FFFFFF",
     opacity: 0.7,
     borderRadius: 25,
+    fontFamily: 'FredokaOne_400Regular',
   },
 
   centered: {
@@ -122,7 +133,7 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    fontFamily: "Cochin",
+    fontFamily: 'FredokaOne_400Regular',
     fontSize: 35,
     fontWeight: "bold",
     height: 25,
@@ -132,7 +143,7 @@ const styles = StyleSheet.create({
 
   title: {
     //marginTop: 20,
-    fontFamily: "Cochin",
+    fontFamily: 'FredokaOne_400Regular',
     fontSize: 20,
     fontWeight: "bold",
     //height: 25,
@@ -160,6 +171,7 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: "center",
     opacity: 0.7,
+    fontFamily: 'FredokaOne_400Regular',
   },
   switchScreen: {
     alignSelf: "center",
@@ -181,13 +193,13 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: "2%",
     marginTop: 15,
-    marginBottom: 15
+    marginBottom: 15,
   },
   buttonText: {
     fontSize: 25,
-    color: "#000000",
+    color: "#40354a",
     textAlign: "center",
-    opacity: "0.8",
+    fontFamily: 'FredokaOne_400Regular',
   },
 });
 

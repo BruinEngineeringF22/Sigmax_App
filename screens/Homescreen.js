@@ -9,11 +9,16 @@ import {
   ScrollView,
 } from "react-native";
 import PythonService from "../PythonService";
+import { useFonts, FredokaOne_400Regular } from '@expo-google-fonts/fredoka-one';
 
 import { auth } from "../Firebase";
 import { useState } from "react";
 
 const Homescreen = ({ navigation }) => {
+  let [fontsLoaded] = useFonts({
+    FredokaOne_400Regular,
+  });
+
   const [bandageCount, setBandageCount] = useState(100);
   const [pillsCount, setPillsCount] = useState(100);
   const [miscCount, setMiscCount] = useState(100);
@@ -55,7 +60,11 @@ const Homescreen = ({ navigation }) => {
   };
 
   const handleRemoteControl = () => {
-    navigation.navigate("RemoteScreen");
+    navigation.navigate("Remote");
+  }
+
+  if (!fontsLoaded) {
+    return null;
   }
 
   return (
@@ -72,7 +81,7 @@ const Homescreen = ({ navigation }) => {
             style={styles.button1}
             onPress={() => onPressBandage()}
           >
-            <Text style={styles.buttonText}>Bandages</Text>
+            <Text style={styles.buttonText}>bandages</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.button2}>
@@ -80,7 +89,7 @@ const Homescreen = ({ navigation }) => {
             style={styles.button2}
             onPress={() => onPressPills()}
           >
-            <Text style={styles.buttonText}>Pills</Text>
+            <Text style={styles.buttonText}>pills</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.button3}>
@@ -88,7 +97,7 @@ const Homescreen = ({ navigation }) => {
             style={styles.button3}
             onPress={() => onPressMisc("miscellaneous")}
           >
-            <Text style={styles.buttonText}>Miscellaneous</Text>
+            <Text style={styles.buttonText}>miscellaneous</Text>
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row" }}>
@@ -146,18 +155,23 @@ const styles = StyleSheet.create({
     borderLeftWidth: 30,
     borderTopWidth: 10,
     alignItems: "left",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontFamily: 'FredokaOne_400Regular',
   },
   welcome: {
     borderLeftWidth: 40,
-    fontSize: 20,
+    fontSize: 25,
     marginTop: 20,
+    fontFamily: 'FredokaOne_400Regular',
+    color: '#40354a'
   },
   buttonText: {
-    fontSize: 30,
-    color: "#000000",
+    fontSize: 25,
+    color: "#40354a",
     textAlign: "center",
     opacity: "1",
+    fontFamily: 'FredokaOne_400Regular',
+    fontWeight: '50'
   },
   button1: {
     alignContent: "center",

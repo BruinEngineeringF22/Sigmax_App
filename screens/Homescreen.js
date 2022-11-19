@@ -27,6 +27,10 @@ const Homescreen = ({ navigation }) => {
     });
   };
 
+  const handleRemoteControl = () => {
+    navigation.navigate("RemoteScreen");
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -55,7 +59,7 @@ const Homescreen = ({ navigation }) => {
           <View>
             <TouchableOpacity
               style={styles.guideButton}
-              onPress={onPressBandage}
+              onPress={handleRemoteControl}
             >
               <Image
                 source={require("./images/Favorites.png")}
@@ -66,7 +70,7 @@ const Homescreen = ({ navigation }) => {
           <View>
             <TouchableOpacity
               style={styles.guideButton}
-              onPress={onPressBandage}
+              //onPress={}
             >
               <Image
                 source={require("./images/Home.png")}

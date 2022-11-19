@@ -10,17 +10,46 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-import PythonService from '../PythonService';
+import PythonService from "../PythonService";
 
 import { auth } from "../Firebase";
+import { useState } from "react";
 
 const Homescreen = ({ navigation }) => {
+  const [bandageCount, setBandageCount] = useState(100);
+  const [pillsCount, setPillsCount] = useState(100);
+  const [miscCount, setMiscCount] = useState(100);
 
-  const onPressBandage = (param) => {
+  const onPressBandage = () => {
+    setBandageCount(bandageCount - 10);
+    console.log(bandageCount);
     console.log("called python api");
-    PythonService.sendSignal(param);
+    PythonService.sendSignal("bandages");
+    navigation.navigate("ProductScreen", {
+      product: "Bandages",
+      count: bandageCount,
+    });
   };
 
+  const onPressPills = () => {
+    setPillsCount(pillsCount - 10);
+    console.log("called python api");
+    PythonService.sendSignal("pills");
+    navigation.navigate("ProductScreen", {
+      product: "Pills",
+      count: pillsCount,
+    });
+  };
+
+  const onPressMisc = () => {
+    setMiscCount(miscCount - 10);
+    console.log("called python api");
+    PythonService.sendSignal("miscellaneous");
+    navigation.navigate("ProductScreen", {
+      product: "Miscellaneous",
+      count: miscCount,
+    });
+  };
   const handleSignOut = () => {
     auth.signOut().then(() => {
       navigation.navigate("SignIn");
@@ -37,18 +66,27 @@ const Homescreen = ({ navigation }) => {
           style={{ width: 200, height: 200, justifyContent: "center" }}
         />
         <View style={styles.button1}>
-          <TouchableOpacity style={styles.button1} onPress={() => onPressBandage("bandages")}>
-            <Text style={styles.buttonText}>bandages</Text>
+          <TouchableOpacity
+            style={styles.button1}
+            onPress={() => onPressBandage()}
+          >
+            <Text style={styles.buttonText}>Bandages</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.button2}>
-          <TouchableOpacity style={styles.button2} onPress={() => onPressBandage("pills")}>
-            <Text style={styles.buttonText}>pills</Text>
+          <TouchableOpacity
+            style={styles.button2}
+            onPress={() => onPressPills()}
+          >
+            <Text style={styles.buttonText}>Pills</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.button3}>
-          <TouchableOpacity style={styles.button3} onPress={() => onPressBandage("miscellaneous")}>
-            <Text style={styles.buttonText}>miscellaneous</Text>
+          <TouchableOpacity
+            style={styles.button3}
+            onPress={() => onPressMisc("miscellaneous")}
+          >
+            <Text style={styles.buttonText}>Miscellaneous</Text>
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: "row" }}>
@@ -81,7 +119,7 @@ const Homescreen = ({ navigation }) => {
             >
               <Image
                 source={require("./images/User_alt.png")}
-                style={{ width: 40, height: 40}}
+                style={{ width: 40, height: 40 }}
               />
             </TouchableOpacity>
           </View>
@@ -91,7 +129,7 @@ const Homescreen = ({ navigation }) => {
   );
 };
 
-export default Homescreen
+export default Homescreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -128,7 +166,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     marginLeft: 35,
     marginRight: 35,
-    flex: 1
+    flex: 1,
   },
   button2: {
     alignContent: "center",
@@ -139,7 +177,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     marginLeft: 35,
     marginRight: 35,
-    flex: 1
+    flex: 1,
   },
   button3: {
     alignContent: "center",
@@ -150,7 +188,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     marginLeft: 35,
     marginRight: 35,
-    flex: 1
+    flex: 1,
   },
   guideButton: {
     padding: 10,
@@ -158,7 +196,6 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginTop: 20,
     marginBottom: 20,
-    justifyContent: "flex-end"
-  }
+    justifyContent: "flex-end",
+  },
 });
-

@@ -2,12 +2,15 @@
 import PythonService from '../PythonService';
 import React, { useState } from "react";
 import {
+  ImageBackground,
   View,
   Button,
   TextInput,
   StyleSheet,
   TouchableOpacity,
   Text,
+  SafeAreaView,
+  Image
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -42,12 +45,15 @@ const SignUp = ({ navigation }) => {
         PythonService.sendSignal(input);
     }
   return (
-    <View style={styles.container}>
+    
+      <SafeAreaView style={styles.container}>
+      <Image style={styles.bg} source={require("./images/signup_page.png")}></Image>
+      <Text style={styles.signup}>SIGN UP</Text>
       <TextInput
         style={styles.input}
         placeholder="Username"
         autoCapitalize="none"
-        placeholderTextColor="white"
+        placeholderTextColor="grey"
         onChangeText={(val) => setUserName(val)}
       />
       <TextInput
@@ -55,21 +61,21 @@ const SignUp = ({ navigation }) => {
         placeholder="Password"
         secureTextEntry={true}
         autoCapitalize="none"
-        placeholderTextColor="white"
+        placeholderTextColor="grey"
         onChangeText={(val) => setPassword(val)}
       />
       <TextInput
         style={styles.input}
         placeholder="Email"
         autoCapitalize="none"
-        placeholderTextColor="white"
+        placeholderTextColor="grey"
         onChangeText={(val) => setEmail(val)}
       />
       <TextInput
         style={styles.input}
         placeholder="Phone Number"
         autoCapitalize="none"
-        placeholderTextColor="white"
+        placeholderTextColor="grey"
         onChangeText={(val) => setPhoneNumber(val)}
       />
       <Button style={styles.signup} title="Sign Up" onPress={handleSubmit} />
@@ -87,7 +93,8 @@ const SignUp = ({ navigation }) => {
       >
         <Text>Test backend</Text>
       </TouchableOpacity>
-    </View>
+      </SafeAreaView>
+    
   );
 };
 
@@ -97,13 +104,14 @@ const styles = StyleSheet.create({
   input: {
     width: 350,
     height: 55,
-    backgroundColor: "#A95DF0",
+    backgroundColor: "white",
     margin: 10,
     padding: 8,
     color: "white",
     borderRadius: 14,
     fontSize: 16,
-    //fontWeight: 50,
+    opacity: 0.8,
+    justifyContent: 'center'
   },
   container: {
     flex: 1,
@@ -125,5 +133,21 @@ const styles = StyleSheet.create({
   },
   switchScreenButton: {
     borderWidth: 3,
+  }, bg: {
+    flex: 1,
+    position: "absolute",
+    width: '110%',
+    height: '110%',
+  }, signup: {
+    position: "absolute",
+    width: 308,
+    height: 105,
+    left: 40,
+    top: 120,
+    fontStyle: "normal",
+    //fontWeight: 60,
+    fontSize: 70,
+    lineHeight: 85,
+    color: "#000000",
   },
 });

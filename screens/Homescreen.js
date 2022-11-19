@@ -3,8 +3,6 @@ import {
   StyleSheet,
   SafeAreaView,
   Text,
-  Button,
-  Platform,
   View,
   TouchableOpacity,
   Image,
@@ -64,11 +62,11 @@ const Homescreen = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <Text style={styles.title}>SIGMAX</Text>
-        <Text style={styles.welcome}>Welcome, *name*! </Text>
         <Image
-          source={{ uri: "https://freepngimg.com/thumb/categories/990.png" }}
-          style={{ width: 200, height: 200, justifyContent: "center" }}
+          source={require("./images/Sigma_Logo.png")}
+          style={styles.img}
         />
+        <Text style={styles.welcome}>Welcome! </Text>
         <View style={styles.button1}>
           <TouchableOpacity
             style={styles.button1}
@@ -101,7 +99,7 @@ const Homescreen = ({ navigation }) => {
             >
               <Image
                 source={require("./images/Favorites.png")}
-                style={{ width: 50, height: 50, justifyContent: "left" }}
+                style={{ width: 50, height: 50, justifyContent: "center" }}
               />
             </TouchableOpacity>
           </View>
@@ -112,7 +110,7 @@ const Homescreen = ({ navigation }) => {
             >
               <Image
                 source={require("./images/Home.png")}
-                style={{ width: 50, height: 50, justifyContent: "left" }}
+                style={{ width: 50, height: 50, justifyContent: "center" }}
               />
             </TouchableOpacity>
           </View>
@@ -123,7 +121,7 @@ const Homescreen = ({ navigation }) => {
             >
               <Image
                 source={require("./images/User_alt.png")}
-                style={{ width: 40, height: 40 }}
+                style={{ width: 50, height: 50, justifyContent: "center"}}
               />
             </TouchableOpacity>
           </View>
@@ -143,15 +141,15 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "#A95DF0",
-    fontWeight: "bold",
     fontSize: 70,
     opacity: "0.3",
     borderLeftWidth: 30,
     borderTopWidth: 10,
     alignItems: "left",
+    fontWeight: "bold"
   },
   welcome: {
-    borderLeftWidth: 20,
+    borderLeftWidth: 40,
     fontSize: 20,
     marginTop: 20,
   },
@@ -198,8 +196,15 @@ const styles = StyleSheet.create({
     padding: 10,
     marginLeft: 40,
     marginRight: 20,
-    marginTop: 20,
+    marginTop: 10,
     marginBottom: 20,
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
   },
+  img: {
+    width: 200, 
+    height: 200, 
+    justifyContent: "right", 
+    flex: 1, 
+    opacity: 0.7
+  }
 });

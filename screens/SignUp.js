@@ -12,11 +12,14 @@ import {
   SafeAreaView,
   Image
 } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useFonts, FredokaOne_400Regular } from '@expo-google-fonts/fredoka-one';
 import { auth } from "../Firebase";
 
 const SignUp = ({ navigation }) => {
+  let [fontsLoaded] = useFonts({
+    FredokaOne_400Regular,
+  });
+
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -44,6 +47,11 @@ const SignUp = ({ navigation }) => {
         console.log("signUp called")
         PythonService.sendSignal(input);
     }
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     
       <SafeAreaView style={styles.container}>
@@ -84,7 +92,7 @@ const SignUp = ({ navigation }) => {
         onPress={handleSwitch}
         style={styles.switchScreenButton}
       >
-        <Text style = {{color: "white"}}>Already have an account? Sign in here</Text>
+        <Text style = {{color: "#432560", fontFamily: 'FredokaOne_400Regular'}}>Already have an account? Sign in here</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -111,7 +119,8 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     fontSize: 16,
     opacity: 0.8,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    fontFamily: 'FredokaOne_400Regular',
   },
   container: {
     flex: 1,
@@ -130,9 +139,11 @@ const styles = StyleSheet.create({
     lineHeight: 85,
     color: "#c99bf6",
     opacity: 0.75,
+    fontFamily: 'FredokaOne_400Regular',
   },
   switchScreenButton: {
     borderWidth: 3,
+    fontFamily: 'FredokaOne_400Regular',
   }, bg: {
     flex: 1,
     position: "absolute",
@@ -149,5 +160,7 @@ const styles = StyleSheet.create({
     fontSize: 70,
     lineHeight: 85,
     color: "#000000",
+    fontFamily: 'FredokaOne_400Regular',
+    opacity: '0.8'
   },
 });
